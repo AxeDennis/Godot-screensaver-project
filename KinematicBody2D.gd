@@ -20,4 +20,3 @@ func _physics_process(delta):
 	
 func _on_Timer_timeout():
 	direction = floor(rand_range(1,5))
-
