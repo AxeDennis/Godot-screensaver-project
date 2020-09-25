@@ -7,8 +7,7 @@ var amount = 1
 func _ready():
 	randomize()
 
-func _on_Timer_timeout():
-	if amount < 50:
+	while amount < 50:
 		var scene = load("res://Kub.tscn")
 		var cube = scene.instance()
 		location.x = rand_range(1, window_size.x)
