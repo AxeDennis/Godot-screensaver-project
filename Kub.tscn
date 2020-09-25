@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 21.6356, 22.0405 )
+extents = Vector2( 29.541, 29.7942 )
+
+[sub_resource type="CircleShape2D" id=2]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-position = Vector2( 511.864, 271.202 )
+position = Vector2( 512.059, 271.174 )
 z_index = 1
 script = ExtResource( 1 )
 __meta__ = {
@@ -17,14 +19,22 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.054902, 1, 0, 1 )
 self_modulate = Color( 0.243137, 1, 0, 1 )
-position = Vector2( -0.315048, -0.314972 )
-scale = Vector2( 0.685019, 0.675177 )
+position = Vector2( -0.0791016, 0.0389404 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.05176e-05, 0 )
+position = Vector2( -0.0556641, 0 )
+scale = Vector2( 0.1, 0.1 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
