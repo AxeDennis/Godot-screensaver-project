@@ -13,7 +13,7 @@ extents = Vector2( 515.018, 5.20642 )
 script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.001
 autostart = true
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
