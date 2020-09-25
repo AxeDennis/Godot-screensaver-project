@@ -13,6 +13,7 @@ extents = Vector2( 515.018, 5.20642 )
 script = ExtResource( 3 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512.129, 271.174 )
 
 [node name="Walls" type="Node" parent="."]
 

@@ -7,8 +7,10 @@
 extents = Vector2( 29.541, 29.7942 )
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 9.19816
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
+modulate = Color( 0, 97.68, 0, 1 )
 position = Vector2( 512.059, 271.174 )
 z_index = 1
 script = ExtResource( 1 )
@@ -17,8 +19,6 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.054902, 1, 0, 1 )
-self_modulate = Color( 0.243137, 1, 0, 1 )
 position = Vector2( -0.0791016, 0.0389404 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )

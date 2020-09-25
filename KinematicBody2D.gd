@@ -22,4 +22,4 @@ func _on_Timer_timeout():
 	direction = floor(rand_range(1,5))
 
 func _on_Area2D_area_entered(area):
-	modulate = Color(255,0,0)
+	modulate = Color(255, 0, 0)
