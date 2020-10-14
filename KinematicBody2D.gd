@@ -1,5 +1,7 @@
 extends KinematicBody2D
 	
+onready var nr_of_infected = get_node("../Infected")
+
 var speed = 100
 var velocity = Vector2()
 var direction = 0
@@ -20,6 +22,8 @@ func _ready():
 	elif rull < 11:
 		infect = 3
 		$Sprite.self_modulate = Color(255,0,0)
+		$"Timer2".start()
+		nr_of_infected.infected += 1
 	
 	
 func _process(_delta):
@@ -60,10 +64,11 @@ func _on_Area2D_body_entered(area):
 	if area.get_class() == "KinematicBody2D":
 		if area.infect == 3:
 			if infect == 2:
-				rull = randi()%1+1
+				rull = randi()%2+1
 				if rull == 1:
 					infect = 3
 					$Sprite.self_modulate = Color(255,0,0)
+					$"Timer2".start()
 	
 	
 	
@@ -74,7 +79,6 @@ func _on_Timer2_timeout():
 			infect = 4
 			$Sprite.self_modulate = Color(0,0,0)
 			speed = 0
-			$blood.show()
 		elif rull > 6 && rull < 59:
 			infect = 3
 			$Sprite.self_modulate = Color(255,0,0)

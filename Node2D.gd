@@ -3,6 +3,7 @@ extends Node2D
 const window_size = Vector2(1024, 600)
 var location = Vector2()
 var amount = 1
+
 	
 func _ready():
 	randomize()
@@ -17,3 +18,4 @@ func _process(_delta):
 		cube.position = location
 		amount += 1
 		print("current: ", amount)
+		
