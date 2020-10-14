@@ -7,7 +7,7 @@ var amount = 1
 func _ready():
 	randomize()
 	
-func _process(delta):
+func _process(_delta):
 	while amount < 50:
 		var scene = load("res://Kub.tscn")
 		var cube = scene.instance()
