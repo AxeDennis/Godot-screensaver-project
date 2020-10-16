@@ -1,8 +1,12 @@
 extends KinematicBody2D
 	
 onready var nr_of_infected = get_node("../Infected")
+onready var nr_of_alive = get_node("../Alive")
+onready var nr_of_healthy = get_node("../Healthy")
+onready var nr_of_immune = get_node("../Immune")
+onready var nr_of_dead = get_node("../Dead")
 
-var speed = 100
+var speed = 75
 var velocity = Vector2()
 var direction = 0
 	
@@ -12,15 +16,17 @@ var infect
 func _ready():
 	randomize()
 	
-	rull = randi()%100
-	if rull < 100 && rull > 94:
-		infect = 1 
+	rull = randi()%100+1
+	if rull < 101 && rull > 94:
+		infect = 1 #IMMUNE
 		$Sprite.self_modulate = Color(0,0,255)
-	elif rull < 95 && rull > 10:
-		infect = 2
+		nr_of_immune.immune += 1
+	elif rull < 95 && rull > 15:
+		infect = 2 #HEALTHY
 		$Sprite.self_modulate = Color(0,255,0)
-	elif rull < 11:
-		infect = 3
+		nr_of_healthy.healthy += 1
+	elif rull < 16 && rull > 0:
+		infect = 3 #INFECTED
 		$Sprite.self_modulate = Color(255,0,0)
 		$"Timer2".start()
 		nr_of_infected.infected += 1
@@ -69,23 +75,34 @@ func _on_Area2D_body_entered(area):
 					infect = 3
 					$Sprite.self_modulate = Color(255,0,0)
 					$"Timer2".start()
+					nr_of_infected.infected += 1
+					nr_of_healthy.healthy -= 1
 	
 	
 	
 func _on_Timer2_timeout():
 	if infect == 3:
 		rull = randi()%100+1
-		if rull > 0 && rull < 5:
-			infect = 4
+		if rull < 60:
+			infect = 4 #DEAD
 			$Sprite.self_modulate = Color(0,0,0)
 			speed = 0
-		elif rull > 6 && rull < 59:
+			nr_of_alive.alive -= 1
+			nr_of_dead.dead += 1
+			nr_of_infected.infected -= 1
+			$Sprite.hide()
+			$Gravestone.show()
+		elif rull > 61 && rull < 84:
 			infect = 3
 			$Sprite.self_modulate = Color(255,0,0)
-		elif rull > 60 && rull < 89:
+		elif rull > 85 && rull < 90:
 			infect = 2
 			$Sprite.self_modulate = Color(0,255,0)
-		elif rull > 90 && rull < 100:
+			nr_of_healthy.healthy += 1
+			nr_of_infected.infected -= 1
+		elif rull > 91:
 			infect = 1
 			$Sprite.self_modulate = Color(0,0,255)
+			nr_of_immune.immune += 1
+			nr_of_infected.infected -= 1
 

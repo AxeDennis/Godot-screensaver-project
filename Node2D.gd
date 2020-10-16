@@ -1,6 +1,6 @@
 extends Node2D
 
-const window_size = Vector2(1024, 600)
+const window_size = Vector2(1400, 900)
 var location = Vector2()
 var amount = 1
 
@@ -9,7 +9,7 @@ func _ready():
 	randomize()
 	
 func _process(_delta):
-	while amount < 50:
+	while amount < 100:
 		var scene = load("res://Kub.tscn")
 		var cube = scene.instance()
 		location.x = rand_range(1, window_size.x)

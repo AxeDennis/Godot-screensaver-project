@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://gravestone.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.541, 29.7942 )
@@ -28,7 +29,7 @@ scale = Vector2( 0.1, 0.1 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 3.0
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -38,7 +39,13 @@ position = Vector2( 0, 0.0589905 )
 shape = SubResource( 2 )
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 20.0
+
+[node name="Gravestone" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.0146484, 0.00439453 )
+scale = Vector2( 0.037583, 0.0364536 )
+texture = ExtResource( 3 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
